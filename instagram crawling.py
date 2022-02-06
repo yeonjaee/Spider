@@ -5,13 +5,14 @@ import time
 import re
 
 driver = webdriver.Chrome('C:/Users/yj/Desktop/datasalon/chromedriver.exe')
-
+options = webdriver.ChromeOptions()
+options.add_experimental_option("excludeSwitches", ["enable-logging"])
+driver = webdriver.Chrome(options=options)
 driver.get('https://www.instagram.com')
-time.sleep(2)
+time.sleep(3)
 
-print('Please enter your INSTAGRAM ID: ')
+print('Please enter your INSTAGRAM PASSWORD: ')
 id = input()
-print('----' * 4)
 input_id = driver.find_elements_by_css_selector('input._2hvTZ.pexuQ.zyHYP')[0]
 input_id.clear()
 input_id.send_keys(id)
